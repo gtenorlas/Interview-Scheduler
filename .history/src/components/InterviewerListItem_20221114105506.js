@@ -1,6 +1,5 @@
 import React from "react";
 import classNames from "classnames";
-import './InterviewerListItem.scss'
 
 export default function InterviewerListItem(props) {
   const liClass = classNames('interviewers__item', {
@@ -15,18 +14,15 @@ export default function InterviewerListItem(props) {
 
   const formatImg = (isSelected) => {
     if (isSelected) {
-      return (<>
-        <img
-          className={classNames('interviewers__item-image')}
-          src={interviewer.avatar}
-          alt={interviewer.name} />
-        {interviewer.name}
-      </>);
+      return (<><img
+        className="interviewers__item-image"
+        src="https://i.imgur.com/LpaY82x.png"
+        alt="Sylvia Palmer" />
+    Sylvia Palmer`</>);
     } else {
-      return (<img
-        className={classNames('interviewers__item-image')}
-        src={interviewer.avatar}
-        alt={interviewer.name} />);
+      return `<img className = "interviewers__item-image"
+      src = "https://i.imgur.com/LpaY82x.png"
+      alt = "Sylvia Palmer" />`;
     }
   }
 

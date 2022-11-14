@@ -3,7 +3,7 @@ import classNames from "classnames";
 import './InterviewerListItem.scss'
 
 export default function InterviewerListItem(props) {
-  const liClass = classNames('interviewers__item', {
+  const imgClass = classNames('interviewers__item', {
     'interviewers__item--selected': props.selected,
   });
 
@@ -16,22 +16,22 @@ export default function InterviewerListItem(props) {
   const formatImg = (isSelected) => {
     if (isSelected) {
       return (<>
-        <img
-          className={classNames('interviewers__item-image')}
-          src={interviewer.avatar}
-          alt={interviewer.name} />
+      <img
+
+        src={interviewer.avatar}
+        alt={interviewer.name} />
         {interviewer.name}
-      </>);
+        </>);
     } else {
       return (<img
-        className={classNames('interviewers__item-image')}
+
         src={interviewer.avatar}
         alt={interviewer.name} />);
     }
   }
 
   return (
-    <li className={liClass} onClick={() => props.setInterviewer(interviewer.id)}>
+    <li className="interviewers__item" onClick={() => props.setInterviewer(interviewer.id)}>
       {formatImg(props.selected)}
     </li>
   );
