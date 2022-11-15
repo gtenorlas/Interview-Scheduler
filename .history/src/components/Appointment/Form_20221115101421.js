@@ -17,12 +17,12 @@ export default function Form(props) {
             type="text"
             placeholder="Enter Student Name"
             onChange={() => setStudent}
+
           />
         </form>
         <InterviewerList
-          interviewers={props.interviewers}
-          value={interviewer}
-          onChange={setInterviewer}
+
+
         />
       </section>
       <section className="appointment__card-right">
