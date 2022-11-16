@@ -85,7 +85,7 @@ export default function Application (props) {
         />
       </section>
       <section className='schedule'>
-        {Object.values(appointments).map(each=><Appointment key={each.id} {...each}/>)}
+        {return Object.value(appointments.map(each=><Appointment key={each.id} id={each.id} time={each.time} interview={each.interview}/>)}
       </section>
     </main>
   )

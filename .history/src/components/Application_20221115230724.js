@@ -84,9 +84,7 @@ export default function Application (props) {
           alt='Lighthouse Labs'
         />
       </section>
-      <section className='schedule'>
-        {Object.values(appointments).map(each=><Appointment key={each.id} {...each}/>)}
-      </section>
+      <section className='schedule'></section>
     </main>
   )
 }
