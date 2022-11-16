@@ -159,8 +159,8 @@ storiesOf("Appointment", module)
   .add("Edit",()=> <Form student="Gene" interviewer={2} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")}/>)
   .add("Create",()=> <Form student="" interviewer={null} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")}/>)
   .add("Appointment Empty", () => (
-    <Fragment>
+    <React.Fragment>
       <Appointment id={1} time="4pm" />
       <Appointment time="5pm" />
-    </Fragment>
+    </React.Fragment>
   ))

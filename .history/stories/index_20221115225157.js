@@ -162,5 +162,5 @@ storiesOf("Appointment", module)
     <Fragment>
       <Appointment id={1} time="4pm" />
       <Appointment time="5pm" />
-    </Fragment>
+    </React.Fragment>
   ))
