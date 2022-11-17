@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState } from 'react'
+import 
 
 import 'components/Application.scss'
 import DayList from './DayList'
