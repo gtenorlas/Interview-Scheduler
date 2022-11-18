@@ -6,9 +6,10 @@ export default function useVisualMode (initial) {
 
   const transition = (newMode,replace=false) => {
     setMode(newMode)
-
+console.log('replace',replace)
     if (replace) {
       const newHistory = history.slice(0, -1)
+      console.log('newHistory',newHistory); 
       setHistory([...newHistory, newMode])
     } else {
       setHistory(oldArray => [...oldArray, newMode])
