@@ -20,16 +20,6 @@ export default function Application (props) {
   /* const setDays = days => setState(prev => ({ ...prev, days }))
     const setAppointments = appointments => setState(prev => ({ ...prev, appointments })) */
   const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const schedule = dailyAppointments.map((appointment) => {
-    return (
-      <Appointment
-        key={appointment.id}
-        id={appointment.id}
-        time={appointment.time}
-        interview={appointment.interview}
-      />
-    );
-  });
 
   useEffect(() => {
     /*     axios.get('http://localhost:8001/api/days').then(response => {
@@ -38,12 +28,12 @@ export default function Application (props) {
 
     Promise.all([
       axios.get('http://localhost:8001/api/days'),
-      axios.get('http://localhost:8001/api/appointments'),
+      axios.get('http://localhost:8001/api/appointments').
       axios.get('http://localhost:8001/api/interviewers')
     ]).then((all) => {
      // console.log(Object.values(all[0].data)); // first
       //console.log(all[1]); // second
-      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
+      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: }))
 /*       setDays(all[0]);
       setAppointments(all[1]); */
     })

@@ -20,16 +20,6 @@ export default function Application (props) {
   /* const setDays = days => setState(prev => ({ ...prev, days }))
     const setAppointments = appointments => setState(prev => ({ ...prev, appointments })) */
   const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const schedule = dailyAppointments.map((appointment) => {
-    return (
-      <Appointment
-        key={appointment.id}
-        id={appointment.id}
-        time={appointment.time}
-        interview={appointment.interview}
-      />
-    );
-  });
 
   useEffect(() => {
     /*     axios.get('http://localhost:8001/api/days').then(response => {
