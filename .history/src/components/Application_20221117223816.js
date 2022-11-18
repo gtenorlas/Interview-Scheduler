@@ -53,7 +53,7 @@ export default function Application (props) {
     appointments: {}
   })
 
-  const setDay = day => setState({ ...state, day })
+  const setDay = day => setState(prev => ({ ...prev, day }))
   const setDays = days => setState(prev => ({ ...prev, days }))
 
   useEffect(() => {
@@ -89,3 +89,4 @@ export default function Application (props) {
     </main>
   )
 }
+<DayList days={days} value={"Tuesday"} onChange={action("setDay")} />

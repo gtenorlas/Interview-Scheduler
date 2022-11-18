@@ -21,3 +21,5 @@ export default function DayList(props) {
     </ul>
   );
 }
+
+// <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} />

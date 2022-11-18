@@ -53,7 +53,7 @@ export default function Application (props) {
     appointments: {}
   })
 
-  const setDay = day => setState({ ...state, day })
+  const setDay = day => setState(prev => ({ ...prev, day }))
   const setDays = days => setState(prev => ({ ...prev, days }))
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function Application (props) {
         />
         <hr className='sidebar__separator sidebar--centered' />
         <nav className='sidebar__menu'>
-          <DayList days={state.days} value={state.day} onChange={setDay} />
+          <DayList days={state.days} value={state.day} setDay={setDay} />
         </nav>
         <img
           className='sidebar__lhl sidebar--centered'
