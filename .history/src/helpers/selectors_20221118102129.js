@@ -33,6 +33,9 @@ export function getAppointmentsForDay (state, day) {
 
 */
 export function getInterview (state, interview) {
+  console.log('state', state)
+  console.log('interview', interview)
+
   const newInterview = {}
 
   //check if null
@@ -43,5 +46,5 @@ export function getInterview (state, interview) {
   newInterview.student = interview.student
   newInterview.interviewer = state.interviewers[interview.interviewer]
 
-  return newInterview;
+  return newInterview
 }

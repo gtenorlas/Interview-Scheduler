@@ -1,4 +1,4 @@
-import { info } from 'sass'
+import { info } from "sass"
 
 export function getAppointmentsForDay (state, day) {
   const selectedDay = {}
@@ -33,15 +33,14 @@ export function getAppointmentsForDay (state, day) {
 
 */
 export function getInterview (state, interview) {
-  const newInterview = {}
+  console.log('state', state)
+  console.log('interview', interview)
+
+  const newInterview = {};
 
   //check if null
-  if (!interview) {
-    return null
+  if(!interview.interview) {
+    return newInterview
   }
 
-  newInterview.student = interview.student
-  newInterview.interviewer = state.interviewers[interview.interviewer]
-
-  return newInterview;
 }

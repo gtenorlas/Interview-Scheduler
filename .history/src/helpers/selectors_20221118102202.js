@@ -43,5 +43,5 @@ export function getInterview (state, interview) {
   newInterview.student = interview.student
   newInterview.interviewer = state.interviewers[interview.interviewer]
 
-  return newInterview;
+  return newInterview
 }

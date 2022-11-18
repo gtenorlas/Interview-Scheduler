@@ -1,8 +1,8 @@
-import { info } from 'sass'
-
 export function getAppointmentsForDay (state, day) {
   const selectedDay = {}
   const matchAppointments = []
+
+
 
   for (const each of state.days) {
     if (each.name === day) {
@@ -21,27 +21,9 @@ export function getAppointmentsForDay (state, day) {
   return matchAppointments
 }
 
+
 /*
-{  
-  "student": "Lydia Miller-Jones",
-  "interviewer": {  
-    "id": 1,
-    "name": "Sylvia Palmer",
-    "avatar": "https://i.imgur.com/LpaY82x.png"
-  }
-}
-
 */
-export function getInterview (state, interview) {
-  const newInterview = {}
+export function getInterview(state,interview){
 
-  //check if null
-  if (!interview) {
-    return null
-  }
-
-  newInterview.student = interview.student
-  newInterview.interviewer = state.interviewers[interview.interviewer]
-
-  return newInterview;
 }
