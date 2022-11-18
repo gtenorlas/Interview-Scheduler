@@ -73,7 +73,9 @@ export default function Application (props) {
         />
       </section>
       <section className='schedule'>
-        {schedule}
+        {Object.values(dailyAppointments).map(each => (
+          <Appointment key={each.id} {...each} />
+        ))}
       </section>
     </main>
   )

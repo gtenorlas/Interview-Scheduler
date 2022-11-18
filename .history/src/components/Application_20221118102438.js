@@ -22,7 +22,7 @@ export default function Application (props) {
   
     const dailyAppointments = getAppointmentsForDay(state, state.day);
 
-  const schedule = dailyAppointments.map((appointment) => {
+  const schedule = dailyappointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
   
     return (
@@ -73,7 +73,9 @@ export default function Application (props) {
         />
       </section>
       <section className='schedule'>
-        {schedule}
+        {Object.values(dailyAppointments).map(each => (
+          <Appointment key={each.id} {...each} />
+        ))}
       </section>
     </main>
   )
