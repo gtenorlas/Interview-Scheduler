@@ -3,7 +3,7 @@ import './styles.scss'
 import Header from './Header'
 import Show from './Show'
 import Empty from './Empty'
-import Form from './Form'
+import Form  from './Form'
 import useVisualMode from 'hooks/useVisualMode'
 
 const EMPTY = 'EMPTY'
@@ -25,8 +25,11 @@ export default function Appointment (props) {
           interviewer={props.interview.interviewer}
         />
       )}
-      {mode === CREATE && (
-       <Form student="" interviewer={null} interviewers={[]} onSave={"onSave"} onCancel={back}/>
+       {mode === CREATE && (
+        <Form
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
+        />
       )}
     </article>
   )
