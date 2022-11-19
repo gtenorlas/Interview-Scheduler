@@ -37,7 +37,7 @@ export function getInterviewersForDay (state, day) {
       const appointmentObj=state.appointments[each];
       //check if interview is not null
       if(appointmentObj.interview) {
-        const interviewerId = appointmentObj.interview.interviewer;
+        const interviewerId = appointmentsObj.interview.interviewer;
         matchInterviewers.push(state.interviewers[interviewerId]);
       }
      
@@ -46,8 +46,6 @@ export function getInterviewersForDay (state, day) {
 
   return matchInterviewers
 }
-
-
 /*
 {  
   "student": "Lydia Miller-Jones",

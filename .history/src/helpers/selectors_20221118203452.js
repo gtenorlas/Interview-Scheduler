@@ -36,18 +36,13 @@ export function getInterviewersForDay (state, day) {
     for (const each of selectedDay.appointments) {
       const appointmentObj=state.appointments[each];
       //check if interview is not null
-      if(appointmentObj.interview) {
-        const interviewerId = appointmentObj.interview.interviewer;
-        matchInterviewers.push(state.interviewers[interviewerId]);
-      }
-     
+      if(appointmentsObj)
+      matchInterviewers.push(state.appointments[each])
     }
   }
 
   return matchInterviewers
 }
-
-
 /*
 {  
   "student": "Lydia Miller-Jones",

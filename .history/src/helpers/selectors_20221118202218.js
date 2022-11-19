@@ -27,26 +27,19 @@ export function getInterviewersForDay (state, day) {
   for (const each of state.days) {
     if (each.name === day) {
       selectedDay.name = each.name
-      selectedDay.appointments = each.appointments
+      selectedDay.interviewers = each.interviewers
       break
     }
   }
 
-  if (selectedDay.appointments) {
-    for (const each of selectedDay.appointments) {
-      const appointmentObj=state.appointments[each];
-      //check if interview is not null
-      if(appointmentObj.interview) {
-        const interviewerId = appointmentObj.interview.interviewer;
-        matchInterviewers.push(state.interviewers[interviewerId]);
-      }
-     
+  if (selectedDay.interviewers) {
+    for (const each of selectedDay.interviewers) {
+      matchInterviewers.push(state.Interviewers[each])
     }
   }
 
   return matchInterviewers
 }
-
 
 /*
 {  

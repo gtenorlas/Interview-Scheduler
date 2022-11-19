@@ -22,7 +22,7 @@ export function getAppointmentsForDay (state, day) {
 
 export function getInterviewersForDay (state, day) {
   const selectedDay = {}
-  const matchInterviewers = []
+  const matchInterviwers = []
 
   for (const each of state.days) {
     if (each.name === day) {
@@ -34,20 +34,12 @@ export function getInterviewersForDay (state, day) {
 
   if (selectedDay.appointments) {
     for (const each of selectedDay.appointments) {
-      const appointmentObj=state.appointments[each];
-      //check if interview is not null
-      if(appointmentObj.interview) {
-        const interviewerId = appointmentObj.interview.interviewer;
-        matchInterviewers.push(state.interviewers[interviewerId]);
-      }
-     
+      matchAppointments.push(state.appointments[each])
     }
   }
 
-  return matchInterviewers
+  return matchAppointments
 }
-
-
 /*
 {  
   "student": "Lydia Miller-Jones",

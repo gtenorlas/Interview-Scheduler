@@ -46,8 +46,6 @@ export function getInterviewersForDay (state, day) {
 
   return matchInterviewers
 }
-
-
 /*
 {  
   "student": "Lydia Miller-Jones",
