@@ -37,14 +37,11 @@ export default function Application (props) {
         time={appointment.time}
         interview={interview}
         interviewers={dailyInterviewers}
-        bookInterview={bookInterview}
       />
     )
   })
 
-  function bookInterview(id, interview) {
-    console.log(id, interview);
-  }
+  function book
 
   useEffect(() => {
     /*     axios.get('http://localhost:8001/api/days').then(response => {
