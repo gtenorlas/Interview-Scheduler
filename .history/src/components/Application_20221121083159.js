@@ -80,13 +80,14 @@ Body:
         method: 'put',
         url: `http://localhost:8001/api/appointments/${id}`,
         data: { interview }
+      }).then(response => {
+        console.log('response status', response.status)
+        return resolve(response
       })
-        .then(response => {
-          console.log('response status', response.status)
-          resolve(response)
-        })
-        .catch(error => reject(error))
-    })
+  
+    });
+
+
   }
 
   useEffect(() => {

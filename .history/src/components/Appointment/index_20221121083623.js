@@ -31,7 +31,7 @@ export default function Appointment (props) {
     setTimeout(() => {
       props.bookInterview(props.id, interview)
       .then(()=>{
-      transition(SHOW)})
+      transition(SHOW){}
     }, 3000)
   }
 

@@ -76,16 +76,36 @@ Body:
     })
 
     return new Promise((resolve, reject) => {
-      axios({
-        method: 'put',
-        url: `http://localhost:8001/api/appointments/${id}`,
-        data: { interview }
-      })
-        .then(response => {
-          console.log('response status', response.status)
-          resolve(response)
-        })
-        .catch(error => reject(error))
+      setTimeout(() => {
+        const result = callback(data);
+        if (!result) {
+          reject('Falsy value retrieved');
+        } else {
+          resolve(result);
+        }
+      }, delay);
+  
+    });
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const result = callback(data);
+        if (!result) {
+          reject('Falsy value retrieved');
+        } else {
+          resolve(result);
+        }
+      }, delay);
+  
+    });
+    
+    axios({
+      method: 'put',
+      url: `http://localhost:8001/api/appointments/${id}`,
+      data: { interview }
+    }).then(response => {
+      console.log('response status', response.status)
+      return response
     })
   }
 

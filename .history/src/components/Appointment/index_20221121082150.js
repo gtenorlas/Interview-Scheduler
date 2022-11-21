@@ -26,12 +26,11 @@ export default function Appointment (props) {
 
     setTimeout(() => {
       transition(SAVING)
-    }, 2000);
+    }, 2000)
 
     setTimeout(() => {
       props.bookInterview(props.id, interview)
-      .then(()=>{
-      transition(SHOW)})
+      transition(SHOW)
     }, 3000)
   }
 

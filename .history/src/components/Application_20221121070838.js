@@ -58,9 +58,8 @@ Body:
   */
 
   function bookInterview (id, interview) {
-    /*     console.log(id, interview)
-    console.log(interview.student) */
-
+    console.log(id, interview)
+    console.log(interview.student)
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -75,18 +74,16 @@ Body:
       appointments
     })
 
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'put',
-        url: `http://localhost:8001/api/appointments/${id}`,
-        data: { interview }
-      })
-        .then(response => {
-          console.log('response status', response.status)
-          resolve(response)
-        })
-        .catch(error => reject(error))
-    })
+    axios
+    {
+      method: 'post',
+      url: '/user/12345',
+      data: {
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+      }
+    }
+      .then(response => console.log(response))
   }
 
   useEffect(() => {

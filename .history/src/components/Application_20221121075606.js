@@ -75,17 +75,13 @@ Body:
       appointments
     })
 
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'put',
-        url: `http://localhost:8001/api/appointments/${id}`,
-        data: { interview }
-      })
-        .then(response => {
-          console.log('response status', response.status)
-          resolve(response)
-        })
-        .catch(error => reject(error))
+    axios({
+      method: 'put',
+      url: `http://localhost:8001/api/appointments/${id}`,
+      data: { interview }
+    }).then(response => {
+      console.log('response status', response.status)
+      return response
     })
   }
 

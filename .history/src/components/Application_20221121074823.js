@@ -58,35 +58,32 @@ Body:
   */
 
   function bookInterview (id, interview) {
-    /*     console.log(id, interview)
+/*     console.log(id, interview)
     console.log(interview.student) */
+  
 
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    }
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    }
-
-    setState({
-      ...state,
-      appointments
+    axios(
+    {
+      method: 'put',
+      url: `http://localhost:8001/api/appointments/${id}`,
+      data: {interview}
     })
-
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'put',
-        url: `http://localhost:8001/api/appointments/${id}`,
-        data: { interview }
-      })
-        .then(response => {
-          console.log('response status', response.status)
-          resolve(response)
+      .then(response => {
+        console.log("response", response.data)
+        const appointment = {
+          ...state.appointments[id],
+          interview: { ...interview }
+        }
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment
+        }
+    
+        setState({
+          ...state,
+          appointments
         })
-        .catch(error => reject(error))
-    })
+      });
   }
 
   useEffect(() => {

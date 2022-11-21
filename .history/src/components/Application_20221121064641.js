@@ -42,25 +42,8 @@ export default function Application (props) {
     )
   })
 
-  /*
-  `PUT /api/appointments/:id`
-
-Body:
-
-```json
-{
-  "interview": {
-    "student": String,
-    "interviewer": Number
-  }
-}
-```
-  */
-
   function bookInterview (id, interview) {
-    /*     console.log(id, interview)
-    console.log(interview.student) */
-
+    console.log(id, interview)
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -68,25 +51,14 @@ Body:
     const appointments = {
       ...state.appointments,
       [id]: appointment
-    }
+    };
 
     setState({
       ...state,
       appointments
-    })
+    });
 
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'put',
-        url: `http://localhost:8001/api/appointments/${id}`,
-        data: { interview }
-      })
-        .then(response => {
-          console.log('response status', response.status)
-          resolve(response)
-        })
-        .catch(error => reject(error))
-    })
+    axios.put(`http://localhost:8001/api/appointments/{id}`,interview) 
   }
 
   useEffect(() => {
