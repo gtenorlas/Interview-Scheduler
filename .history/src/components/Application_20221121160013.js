@@ -101,9 +101,6 @@ Body:
       ...state.appointments[id],
       interview: null
     }
-
-    console.log('appointment', appointment)
-
     const appointments = {
       ...state.appointments,
       [id]: appointment

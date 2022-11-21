@@ -36,7 +36,7 @@ export function getInterviewersForDay (state, day) {
     interviewerList.forEach((interviewerId) => {
       for (const interviewer in state.interviewers) {
         if (interviewerId === Number(interviewer)) {
-          matchInterviewers.push(state.interviewers[interviewer]);
+          interviewersForDay.push(state.interviewers[interviewer]);
         }
       }
     });

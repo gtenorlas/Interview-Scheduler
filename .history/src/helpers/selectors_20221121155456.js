@@ -26,20 +26,22 @@ export function getInterviewersForDay (state, day) {
   for (const each of state.days) {
     if (each.name === day) {
       selectedDay.name = each.name
-      selectedDay.interviewers = each.interviewers
+      selectedDay.appointments = each.appointments
       break
     }
   }
 
   if (selectedDay.name) {
-    const interviewerList = selectedDay.interviewers;
-    interviewerList.forEach((interviewerId) => {
-      for (const interviewer in state.interviewers) {
-        if (interviewerId === Number(interviewer)) {
-          matchInterviewers.push(state.interviewers[interviewer]);
+    for (const each of selectedDay.appointments) {
+      const appointmentObj = state.appointments[each]
+      //check if interview is not null
+      if (appointmentObj.interview) {
+        const interviewerId = appointmentObj.interview.interviewer
+        if (!matchInterviewers.includes(state.interviewers[interviewerId])) {
+          matchInterviewers.push(state.interviewers[interviewerId])
         }
       }
-    });
+    }
   }
 
   return matchInterviewers

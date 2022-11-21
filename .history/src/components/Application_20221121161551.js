@@ -102,7 +102,7 @@ Body:
       interview: null
     }
 
-    console.log('appointment', appointment)
+    console.log('appointment', id)
 
     const appointments = {
       ...state.appointments,

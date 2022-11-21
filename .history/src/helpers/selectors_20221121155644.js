@@ -32,11 +32,11 @@ export function getInterviewersForDay (state, day) {
   }
 
   if (selectedDay.name) {
-    const interviewerList = selectedDay.interviewers;
+    const interviewerList = selectedinterviewers;
     interviewerList.forEach((interviewerId) => {
       for (const interviewer in state.interviewers) {
         if (interviewerId === Number(interviewer)) {
-          matchInterviewers.push(state.interviewers[interviewer]);
+          interviewersForDay.push(state.interviewers[interviewer]);
         }
       }
     });

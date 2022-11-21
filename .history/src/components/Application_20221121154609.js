@@ -84,10 +84,6 @@ Body:
       })
         .then(response => {
           console.log('response status', response.status)
-          setState({
-            ...state,
-            appointments
-          })
           resolve(response)
         })
         .catch(error => reject(error))
@@ -101,25 +97,21 @@ Body:
       ...state.appointments[id],
       interview: null
     }
-
-    console.log('appointment', appointment)
-
     const appointments = {
       ...state.appointments,
       [id]: appointment
     }
 
+    setState({
+      ...state,
+      appointments
+    })
 
     return new Promise((resolve, reject) => {
       axios
         .delete(`http://localhost:8001/api/appointments/${id}`)
         .then(response => {
           console.log('delete response', response)
-          setState({
-            ...state,
-            appointments
-          })
-      
           resolve(response)
         })
         .catch(error => {

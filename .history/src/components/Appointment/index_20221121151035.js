@@ -24,20 +24,18 @@ export default function Appointment (props) {
     }
     //console.log(props.id, interview)
 
-    transition(SAVING, true)
+    setTimeout(() => {
+      transition(SAVING)
+    }, 2000);
 
-    props.bookInterview(props.id, interview).then(() => {
-      transition(SHOW)
-    })
+    setTimeout(() => {
+      props.bookInterview(props.id, interview)
+      .then(()=>{
+      transition(SHOW)})
+    }, 3000)
   }
 
-  //delete appointment
-  function cancel () {
-    props.cancelInterview(props.id)
-    .then(() => {
-      transition(EMPTY)
-    })
-  }
+  function delete(
 
   return (
     <article className='appointment'>
@@ -47,7 +45,7 @@ export default function Appointment (props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          onDelete={cancel}
+          onDelete = {props.cancelInterview}
         />
       )}
       {mode === CREATE && (

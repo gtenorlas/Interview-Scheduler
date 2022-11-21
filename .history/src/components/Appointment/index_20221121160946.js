@@ -26,15 +26,16 @@ export default function Appointment (props) {
 
     transition(SAVING, true)
 
-    props.bookInterview(props.id, interview).then(() => {
-      transition(SHOW)
-    })
-  }
+  
+      props.bookInterview(props.id, interview).
+      .then(() => {
+        transition(SHOW)
+      })
+   
 
   //delete appointment
   function cancel () {
-    props.cancelInterview(props.id)
-    .then(() => {
+    props.cancelInterview(props.id).then(() => {
       transition(EMPTY)
     })
   }

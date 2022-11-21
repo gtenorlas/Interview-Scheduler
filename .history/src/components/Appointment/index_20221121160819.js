@@ -24,15 +24,20 @@ export default function Appointment (props) {
     }
     //console.log(props.id, interview)
 
-    transition(SAVING, true)
+ 
+      transition(SAVING, true)
 
-    props.bookInterview(props.id, interview).then(() => {
-      transition(SHOW)
-    })
+
+    setTimeout(() => {
+      props.bookInterview(props.id, interview).then(() => {
+        transition(SHOW)
+      })
+    }, 3000)
   }
 
   //delete appointment
   function cancel () {
+
     props.cancelInterview(props.id)
     .then(() => {
       transition(EMPTY)

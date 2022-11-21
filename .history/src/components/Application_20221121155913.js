@@ -101,14 +101,15 @@ Body:
       ...state.appointments[id],
       interview: null
     }
-
-    console.log('appointment', appointment)
-
     const appointments = {
       ...state.appointments,
       [id]: appointment
     }
 
+    setState({
+      ...state,
+      appointments
+    })
 
     return new Promise((resolve, reject) => {
       axios
