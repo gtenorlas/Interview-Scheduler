@@ -38,7 +38,6 @@ export default function Application (props) {
         interview={interview}
         interviewers={dailyInterviewers}
         bookInterview={bookInterview}
-        cancelInterview={cancelInterview}
       />
     )
   })
@@ -108,18 +107,6 @@ Body:
       ...state,
       appointments
     })
-
-    return(
-      axios.delete(`http://localhost:8001/api/appointments/${id}`)
-      .then(response =>{
-        console.log("delete response",response)
-        return response
-      })
-      .catch(error => {
-        console.log("error delete",error)
-        return error
-      })
-    )
 
   }
 

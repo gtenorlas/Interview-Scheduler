@@ -117,7 +117,6 @@ Body:
       })
       .catch(error => {
         console.log("error delete",error)
-        return error
       })
     )
 

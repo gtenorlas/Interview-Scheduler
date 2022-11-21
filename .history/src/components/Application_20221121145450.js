@@ -38,7 +38,6 @@ export default function Application (props) {
         interview={interview}
         interviewers={dailyInterviewers}
         bookInterview={bookInterview}
-        cancelInterview={cancelInterview}
       />
     )
   })
@@ -88,39 +87,10 @@ Body:
         })
         .catch(error => reject(error))
     })
-
-
   }
 
   function cancelInterview(id) {
-    console.log("id", id)
-
-    const appointment = {
-      ...state.appointments[id],
-      interview: null
-    }
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    }
-
-    setState({
-      ...state,
-      appointments
-    })
-
-    return(
-      axios.delete(`http://localhost:8001/api/appointments/${id}`)
-      .then(response =>{
-        console.log("delete response",response)
-        return response
-      })
-      .catch(error => {
-        console.log("error delete",error)
-        return error
-      })
-    )
-
+    console.log("id")
   }
 
   useEffect(() => {

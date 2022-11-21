@@ -113,11 +113,6 @@ Body:
       axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(response =>{
         console.log("delete response",response)
-        return response
-      })
-      .catch(error => {
-        console.log("error delete",error)
-        return error
       })
     )
 

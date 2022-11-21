@@ -115,10 +115,6 @@ Body:
         console.log("delete response",response)
         return response
       })
-      .catch(error => {
-        console.log("error delete",error)
-        return error
-      })
     )
 
   }
