@@ -20,8 +20,8 @@ export default function Appointment (props) {
       student: name,
       interviewer
     };
-    //console.log(props.id, interview)
-    props.bookInterview(props.id, interview);
+    console.log(props.id, interview)
+    props.bookInterview(props.id, interview)
   }
 
   return (

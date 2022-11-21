@@ -53,10 +53,7 @@ export default function Application (props) {
       [id]: appointment
     };
 
-    setState({
-      ...state,
-      appointments
-    });
+    setState.appointments()
   }
 
   useEffect(() => {

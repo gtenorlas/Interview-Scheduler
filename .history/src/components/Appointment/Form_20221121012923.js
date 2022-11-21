@@ -31,7 +31,7 @@ export default function Form(props) {
             name={student}
             type="text"
             placeholder={student || "Enter Student Name"}
-            onChange={(event) => setStudent(event.target.value)}
+            onChange={(event) => console.log(event.target.value)}
           />
         </form>
         <InterviewerList

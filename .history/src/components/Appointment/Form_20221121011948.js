@@ -31,7 +31,7 @@ export default function Form(props) {
             name={student}
             type="text"
             placeholder={student || "Enter Student Name"}
-            onChange={(event) => setStudent(event.target.value)}
+            onChange={() => setStudent}
           />
         </form>
         <InterviewerList
@@ -43,7 +43,7 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={()=>cancel(props)}>Cancel</Button>
-          <Button confirm onClick={()=>props.onSave(student,interviewer)} >Save</Button>
+          <Button confirm onClick={()=>props.onSave}() >Save</Button>
         </section>
       </section>
     </main>

@@ -37,7 +37,7 @@ export function getInterviewersForDay (state, day) {
       //check if interview is not null
       if (appointmentObj.interview) {
         const interviewerId = appointmentObj.interview.interviewer
-        if (!matchInterviewers.includes(state.interviewers[interviewerId])) {
+        if (!matchInterviewers.contains(state.interviewers[interviewerId])) {
           matchInterviewers.push(state.interviewers[interviewerId])
         }
       }

@@ -1,3 +1,4 @@
+
 export function getAppointmentsForDay (state, day) {
   const selectedDay = {}
   const matchAppointments = []
@@ -33,19 +34,20 @@ export function getInterviewersForDay (state, day) {
 
   if (selectedDay.appointments) {
     for (const each of selectedDay.appointments) {
-      const appointmentObj = state.appointments[each]
+      const appointmentObj=state.appointments[each];
       //check if interview is not null
-      if (appointmentObj.interview) {
-        const interviewerId = appointmentObj.interview.interviewer
-        if (!matchInterviewers.includes(state.interviewers[interviewerId])) {
-          matchInterviewers.push(state.interviewers[interviewerId])
-        }
+      if(appointmentObj.interview) {
+        const interviewerId = appointmentObj.interview.interviewer;
+        if (!matchInterviewers.contains(state.interviewers[interviewerId])) {
+        matchInterviewers.push(state.interviewers[interviewerId]);
       }
+     
     }
   }
 
   return matchInterviewers
 }
+
 
 /*
 {  
@@ -69,5 +71,5 @@ export function getInterview (state, interview) {
   newInterview.student = interview.student
   newInterview.interviewer = state.interviewers[interview.interviewer]
 
-  return newInterview
+  return newInterview;
 }
