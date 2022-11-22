@@ -17,7 +17,6 @@ const CONFIRM = 'CONFIRM'
 const DELETING = 'DELETING'
 const EDIT = 'EDIT'
 const ERROR_SAVE = 'ERROR_SAVE'
-const ERROR_DELETE = 'ERROR_DELETE'
 
 export default function Appointment (props) {
   const { mode, transition, back } = useVisualMode(
@@ -86,9 +85,6 @@ export default function Appointment (props) {
         <Error onClose={() => back()} message='Could not save appointment' />
       )}
       {mode === DELETING && <Status message='Deleting' />}
-      {mode === ERROR_DELETE && (
-        <Error onClose={() => back()} message='Could not delete appointment' />
-      )}
       {mode === CONFIRM && (
         <Confirm
           message='Are you sure you would like to delete?'
