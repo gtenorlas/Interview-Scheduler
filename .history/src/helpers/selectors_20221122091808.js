@@ -37,6 +37,8 @@ export function getInterviewersForDay (state, day) {
     }
   }
 
+
+
   if (selectedDay.interviewers) {
     const interviewerList = selectedDay.interviewers;
     interviewerList.forEach((interviewerId) => {

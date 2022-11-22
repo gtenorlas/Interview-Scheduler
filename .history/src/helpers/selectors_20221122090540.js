@@ -26,7 +26,9 @@ export function getAppointmentsForDay (state, day) {
 Reformat data structure for Interviewers for a selected day
 */
 export function getInterviewersForDay (state, day) {
-  const selectedDay = {}
+  const selectedDay = state.days.filter(
+    (element) => element.name === day
+  );
   const matchInterviewers = []
 
   for (const each of state.days) {

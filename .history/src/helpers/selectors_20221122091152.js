@@ -36,6 +36,7 @@ export function getInterviewersForDay (state, day) {
       break
     }
   }
+  
 
   if (selectedDay.interviewers) {
     const interviewerList = selectedDay.interviewers;
