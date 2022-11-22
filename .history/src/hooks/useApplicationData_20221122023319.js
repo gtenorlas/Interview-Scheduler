@@ -29,9 +29,8 @@ export default function useApplicationData () {
   }, [])
 
   function bookInterview (id, interview) {
-    //check if it is an update or new appointment
-    const isNewAppointment = state.appointments[id].interview ? false : true 
-    console.log('day', state.appointments[id].interview)
+    const isNewAppointment = state.appointments[id].interview ? true : false
+    console.log("")
 
     const appointment = {
       ...state.appointments[id],

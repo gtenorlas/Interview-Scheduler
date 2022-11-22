@@ -29,10 +29,6 @@ export default function useApplicationData () {
   }, [])
 
   function bookInterview (id, interview) {
-    //check if it is an update or new appointment
-    const isNewAppointment = state.appointments[id].interview ? false : true 
-    console.log('day', state.appointments[id].interview)
-
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -42,10 +38,10 @@ export default function useApplicationData () {
       [id]: appointment
     }
 
-    /*     setState({
+    setState({
       ...state,
       appointments
-    }) */
+    })
 
     return new Promise((resolve, reject) => {
       axios({
@@ -54,19 +50,16 @@ export default function useApplicationData () {
         data: { interview }
       })
         .then(response => {
-          let days
-          if (isNewAppointment) {
-            days = state.days.map(each => {
-              if (each.name === state.day) {
-                console.log('each', each)
-                return { ...each, spots: each.spots - 1 }
-              }
-              return each
-            })
-          } else {
-            days = [...state.days]
-          }
+          console.log('response status', response.status)
+          const days = state.days.map((each)=>{
+            if(each.name===state.day) {
+              console.log("each",each)
+              return {...each,spots: each.spots-1}
+            }
+            return each;
+          });
 
+        
           setState({
             ...state,
             appointments,
@@ -97,14 +90,16 @@ export default function useApplicationData () {
         .then(response => {
           console.log('delete response', response)
 
-          //calculate spots
-          const days = state.days.map(each => {
-            if (each.name === state.day) {
-              return { ...each, spots: each.spots + 1 }
-            }
-            return each
-          })
+       
 
+          const days = state.days.map((each)=>{
+            if(each.name===state.day) {
+              return {...each,spots: each.spots+1}
+            }
+            return each;
+          });
+
+        
           setState({
             ...state,
             appointments,
@@ -119,6 +114,7 @@ export default function useApplicationData () {
         })
     })
   }
+
 
   return {
     state,

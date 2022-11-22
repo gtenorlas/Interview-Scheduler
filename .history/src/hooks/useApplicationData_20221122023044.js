@@ -29,9 +29,7 @@ export default function useApplicationData () {
   }, [])
 
   function bookInterview (id, interview) {
-    //check if it is an update or new appointment
-    const isNewAppointment = state.appointments[id].interview ? false : true 
-    console.log('day', state.appointments[id].interview)
+    const isNewAppointment = state.appointments[id].interview ? true : false
 
     const appointment = {
       ...state.appointments[id],
@@ -56,16 +54,13 @@ export default function useApplicationData () {
         .then(response => {
           let days
           if (isNewAppointment) {
-            days = state.days.map(each => {
-              if (each.name === state.day) {
-                console.log('each', each)
-                return { ...each, spots: each.spots - 1 }
-              }
-              return each
-            })
-          } else {
-            days = [...state.days]
-          }
+          days = state.days.map(each => {
+            if (each.name === state.day) {
+              console.log('each', each)
+              return { ...each, spots: each.spots - 1 }
+            }
+            return each
+          })
 
           setState({
             ...state,
