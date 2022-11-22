@@ -1,6 +1,6 @@
 import React from 'react'
-import useApplicationData from 'hooks/useApplicationData'
-
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import 'components/Application.scss'
 import DayList from './DayList'
@@ -12,12 +12,6 @@ import {
 } from 'helpers/selectors'
 
 export default function Application (props) {
-  const {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  } = useApplicationData();
 
   const dailyAppointments = getAppointmentsForDay(state, state.day)
   const dailyInterviewers = getInterviewersForDay(state, state.day)

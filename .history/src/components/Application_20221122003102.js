@@ -1,5 +1,5 @@
 import React from 'react'
-import useApplicationData from 'hooks/useApplicationData'
+import 
 
 
 import 'components/Application.scss'
@@ -12,12 +12,6 @@ import {
 } from 'helpers/selectors'
 
 export default function Application (props) {
-  const {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  } = useApplicationData();
 
   const dailyAppointments = getAppointmentsForDay(state, state.day)
   const dailyInterviewers = getInterviewersForDay(state, state.day)
