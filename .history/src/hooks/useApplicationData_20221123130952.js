@@ -67,11 +67,12 @@ export default function useApplicationData () {
           day: action.day
         }
       case SET_APPLICATION_DATA:
+        console.log(action);
         return {
           ...state,
-          days: action.days || state.days,
-          appointments: action.appointments || state.appointments,
-          interviewers: action.interviewers || state.interviewers
+          days: action.days,
+          appointments: action.appointments,
+          interviews: action.interviewers
         }
       case SET_INTERVIEW:
         return {

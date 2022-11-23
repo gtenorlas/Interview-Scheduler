@@ -6,30 +6,24 @@ import axios from 'axios'
 Handles states and API calls
 */
 
-const HOST_URL = 'http://localhost:8001'
-const SET_DAY = 'SET_DAY'
-const SET_APPLICATION_DATA = 'SET_APPLICATION_DATA' //set days, appointments, interviewers
-const SET_INTERVIEW = 'SET_INTERVIEW'
+const HOST_URL = 'http://localhost:8001';
+const SET_DAY = "SET_DAY";
+const SET_APPLICATION_DATA = "SET_APPLICATION_DATA"; //set days, appointments, interviewers
+const SET_INTERVIEW = "SET_INTERVIEW";
 
 export default function useApplicationData () {
-  const [state, dispatch] = useReducer(reducer, {
-    day: 'Monday',
-    days: [],
-    appointments: {},
-    interviewers: {}
-  });
-  /*   const [state, setState] = useState({
+  const [state, dispatch] = useReducer(reducer,null);
+/*   const [state, setState] = useState({
     day: 'Monday',
     days: [],
     appointments: {},
     interviewers: {}
   })
  */
-  /*   const setDay = day => setState({ ...state, day }) */
-  const setDay = day => dispatch({ type: SET_DAY, day })
+  const setDay = day => setState({ ...state, day })
 
   //retrieve initial days, appointments, interviewers from back-end once
-  /*   useEffect(() => {
+  useEffect(() => {
     Promise.all([
       axios.get(`${HOST_URL}/api/days`),
       axios.get(`${HOST_URL}/api/appointments`),
@@ -42,46 +36,23 @@ export default function useApplicationData () {
         interviewers: all[2].data
       }))
     })
-  }, []) */
-
-  useEffect(() => {
-    Promise.all([
-      axios.get(`${HOST_URL}/api/days`),
-      axios.get(`${HOST_URL}/api/appointments`),
-      axios.get(`${HOST_URL}/api/interviewers`)
-    ]).then(all => {
-      const applicationData = {
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data
-      }
-      dispatch({ type: SET_APPLICATION_DATA, ...applicationData })
-    })
   }, [])
-
-  function reducer (state, action) {
+  
+  function reducer(state, action) {
     switch (action.type) {
       case SET_DAY:
         return {
-          ...state,
-          day: action.day
-        }
+state[day]
+         }
       case SET_APPLICATION_DATA:
-        return {
-          ...state,
-          days: action.days || state.days,
-          appointments: action.appointments || state.appointments,
-          interviewers: action.interviewers || state.interviewers
-        }
-      case SET_INTERVIEW:
-        return {
-          ...state,
-          interview: action.interview
-        }
+        return { /* insert logic */ }
+      case SET_INTERVIEW: {
+        return /* insert logic */
+      }
       default:
         throw new Error(
           `Tried to reduce with unsupported action type: ${action.type}`
-        )
+        );
     }
   }
 
@@ -90,7 +61,7 @@ export default function useApplicationData () {
   */
   function bookInterview (id, interview) {
     //check if it is an update or a new appointment
-    const isNewAppointment = state.appointments[id].interview ? false : true
+    const isNewAppointment = state.appointments[id].interview ? false : true 
 
     const appointment = {
       ...state.appointments[id],
@@ -121,12 +92,11 @@ export default function useApplicationData () {
             days = [...state.days]
           }
 
-          /*     setState({
+          setState({
             ...state,
             appointments,
             days
-          }) */
-          dispatch({ type: SET_APPLICATION_DATA, days, appointments })
+          })
           resolve(response)
         })
         .catch(error => reject(error))
@@ -151,6 +121,7 @@ export default function useApplicationData () {
       axios
         .delete(`${HOST_URL}/api/appointments/${id}`)
         .then(response => {
+
           //calculate spots
           const days = state.days.map(each => {
             if (each.name === state.day) {
@@ -159,12 +130,11 @@ export default function useApplicationData () {
             return each
           })
 
-          /*          setState({
+          setState({
             ...state,
             appointments,
             days
-          }) */
-          dispatch({ type: SET_APPLICATION_DATA, days, appointments })
+          })
           resolve(response)
         })
         .catch(error => {

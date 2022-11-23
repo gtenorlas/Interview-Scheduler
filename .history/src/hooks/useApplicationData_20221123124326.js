@@ -12,12 +12,7 @@ const SET_APPLICATION_DATA = 'SET_APPLICATION_DATA' //set days, appointments, in
 const SET_INTERVIEW = 'SET_INTERVIEW'
 
 export default function useApplicationData () {
-  const [state, dispatch] = useReducer(reducer, {
-    day: 'Monday',
-    days: [],
-    appointments: {},
-    interviewers: {}
-  });
+  const [state, dispatch] = useReducer(reducer, {day: 'Monday'});
   /*   const [state, setState] = useState({
     day: 'Monday',
     days: [],
@@ -55,7 +50,7 @@ export default function useApplicationData () {
         appointments: all[1].data,
         interviewers: all[2].data
       }
-      dispatch({ type: SET_APPLICATION_DATA, ...applicationData })
+      dispatch({ type: SET_APPLICATION_DATA, applicationData })
     })
   }, [])
 
@@ -69,9 +64,9 @@ export default function useApplicationData () {
       case SET_APPLICATION_DATA:
         return {
           ...state,
-          days: action.days || state.days,
-          appointments: action.appointments || state.appointments,
-          interviewers: action.interviewers || state.interviewers
+          days: action.days,
+          appointments: action.appointments,
+          interviews: action.interviews
         }
       case SET_INTERVIEW:
         return {

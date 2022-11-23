@@ -5,7 +5,7 @@ export function getAppointmentsForDay (state, day) {
   const selectedDay = {}
   const matchAppointments = []
 
-  console.log("state days",state.days);
+  console.log("state days",sa)
 
   for (const each of state.days) {
     if (each.name === day) {

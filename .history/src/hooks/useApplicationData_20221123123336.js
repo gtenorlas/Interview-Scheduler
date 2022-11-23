@@ -12,12 +12,7 @@ const SET_APPLICATION_DATA = 'SET_APPLICATION_DATA' //set days, appointments, in
 const SET_INTERVIEW = 'SET_INTERVIEW'
 
 export default function useApplicationData () {
-  const [state, dispatch] = useReducer(reducer, {
-    day: 'Monday',
-    days: [],
-    appointments: {},
-    interviewers: {}
-  });
+  const [state, dispatch] = useReducer(reducer, null)
   /*   const [state, setState] = useState({
     day: 'Monday',
     days: [],
@@ -25,8 +20,8 @@ export default function useApplicationData () {
     interviewers: {}
   })
  */
-  /*   const setDay = day => setState({ ...state, day }) */
-  const setDay = day => dispatch({ type: SET_DAY, day })
+/*   const setDay = day => setState({ ...state, day }) */
+const setDay = day => dispatch({ type: SET_DAY, day }))
 
   //retrieve initial days, appointments, interviewers from back-end once
   /*   useEffect(() => {
@@ -44,20 +39,18 @@ export default function useApplicationData () {
     })
   }, []) */
 
-  useEffect(() => {
-    Promise.all([
-      axios.get(`${HOST_URL}/api/days`),
-      axios.get(`${HOST_URL}/api/appointments`),
-      axios.get(`${HOST_URL}/api/interviewers`)
-    ]).then(all => {
-      const applicationData = {
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data
-      }
-      dispatch({ type: SET_APPLICATION_DATA, ...applicationData })
-    })
-  }, [])
+  Promise.all([
+    axios.get(`${HOST_URL}/api/days`),
+    axios.get(`${HOST_URL}/api/appointments`),
+    axios.get(`${HOST_URL}/api/interviewers`)
+  ]).then(all => {
+    const applicationData = {
+      days: all[0].data,
+      appointments: all[1].data,
+      interviewers: all[2].data
+    }
+    dispatch({ type: SET_APPLICATION_DATA, applicationData })
+  })
 
   function reducer (state, action) {
     switch (action.type) {
@@ -69,9 +62,9 @@ export default function useApplicationData () {
       case SET_APPLICATION_DATA:
         return {
           ...state,
-          days: action.days || state.days,
-          appointments: action.appointments || state.appointments,
-          interviewers: action.interviewers || state.interviewers
+          days: action.days,
+          appointments: action.appointments,
+          interviews: action.interviews
         }
       case SET_INTERVIEW:
         return {
@@ -121,7 +114,7 @@ export default function useApplicationData () {
             days = [...state.days]
           }
 
-          /*     setState({
+      /*     setState({
             ...state,
             appointments,
             days
@@ -159,7 +152,7 @@ export default function useApplicationData () {
             return each
           })
 
-          /*          setState({
+ /*          setState({
             ...state,
             appointments,
             days

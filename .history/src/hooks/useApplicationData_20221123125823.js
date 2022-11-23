@@ -55,7 +55,7 @@ export default function useApplicationData () {
         appointments: all[1].data,
         interviewers: all[2].data
       }
-      dispatch({ type: SET_APPLICATION_DATA, ...applicationData })
+      dispatch({ type: SET_APPLICATION_DATA, applicationData })
     })
   }, [])
 
@@ -67,11 +67,12 @@ export default function useApplicationData () {
           day: action.day
         }
       case SET_APPLICATION_DATA:
+        console.log(action)
         return {
           ...state,
-          days: action.days || state.days,
-          appointments: action.appointments || state.appointments,
-          interviewers: action.interviewers || state.interviewers
+          days: action.days,
+          appointments: action.appointments,
+          interviews: action.interviews
         }
       case SET_INTERVIEW:
         return {
