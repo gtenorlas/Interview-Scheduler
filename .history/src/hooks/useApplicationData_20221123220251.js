@@ -60,8 +60,7 @@ export default function useApplicationData () {
         const days = getDays(
           [...state.days],
           SUBTRACT_SPOTS,
-          state.day,
-          action.isNewAppointment
+          state.day
         )
         return {
           ...state,

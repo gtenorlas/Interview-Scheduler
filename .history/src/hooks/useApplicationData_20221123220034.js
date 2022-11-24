@@ -60,8 +60,8 @@ export default function useApplicationData () {
         const days = getDays(
           [...state.days],
           SUBTRACT_SPOTS,
-          state.day,
-          action.isNewAppointment
+          action.isNewAppointment,
+          state.day
         )
         return {
           ...state,
@@ -86,12 +86,7 @@ export default function useApplicationData () {
   Handles updating the spots in the Days array
   return : days 
   */
-  function getDays (
-    stateDays,
-    operation,
-    selectedDay,
-    isNewAppointment = false
-  ) {
+  function getDays (stateDays,operation,isNewAppointment = false,selectedDay) {
     let days = null
     if (operation === SUBTRACT_SPOTS) {
       if (isNewAppointment) {

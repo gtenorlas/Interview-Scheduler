@@ -2,6 +2,10 @@
 import { useReducer, useEffect } from 'react'
 import axios from 'axios'
 
+/*
+Handles states and API calls
+*/
+
 const HOST_URL = 'http://localhost:8001'
 const SET_DAY = 'SET_DAY'
 const SET_APPLICATION_DATA = 'SET_APPLICATION_DATA' //set days, appointments, interviewers
@@ -9,9 +13,6 @@ const SET_INTERVIEW = 'SET_INTERVIEW'
 const ADD_SPOTS = 'ADD_SPOTS'
 const SUBTRACT_SPOTS = 'SUBTRACT_SPOTS'
 
-/*
-Handles states and API calls
-*/
 export default function useApplicationData () {
   const [state, dispatch] = useReducer(reducer, {
     day: 'Monday',
@@ -20,7 +21,33 @@ export default function useApplicationData () {
     interviewers: {}
   })
 
+  /*   const [state, setState] = useState({
+    day: 'Monday',
+    days: [],
+    appointments: {},
+    interviewers: {}
+  })
+ */
+
+  /*   const setDay = day => setState({ ...state, day }) */
+
   const setDay = day => dispatch({ type: SET_DAY, day })
+
+  //retrieve initial days, appointments, interviewers from back-end once
+  /*   useEffect(() => {
+    Promise.all([
+      axios.get(`${HOST_URL}/api/days`),
+      axios.get(`${HOST_URL}/api/appointments`),
+      axios.get(`${HOST_URL}/api/interviewers`)
+    ]).then(all => {
+      setState(prev => ({
+        ...prev,
+        days: all[0].data,
+        appointments: all[1].data,
+        interviewers: all[2].data
+      }))
+    })
+  }, []) */
 
   useEffect(() => {
     Promise.all([
@@ -56,23 +83,25 @@ export default function useApplicationData () {
           ...state,
           interview: action.interview
         }
-      case SUBTRACT_SPOTS: {
-        const days = getDays(
-          [...state.days],
-          SUBTRACT_SPOTS,
-          state.day,
-          action.isNewAppointment
-        )
+      case SUBTRACT_SPOTS: 
         return {
           ...state,
-          days
+          days: getDays(su)
         }
-      }
+      
       case ADD_SPOTS: {
-        const days = getDays([...state.days], ADD_SPOTS, state.day)
+        const getDays = () => {
+          const days = state.days.map(each => {
+            if (each.name === state.day) {
+              return { ...each, spots: each.spots + 1 }
+            }
+            return each
+          })
+          return days
+        }
         return {
           ...state,
-          days
+          days: getDays()
         }
       }
       default:
@@ -86,28 +115,23 @@ export default function useApplicationData () {
   Handles updating the spots in the Days array
   return : days 
   */
-  function getDays (
-    stateDays,
-    operation,
-    selectedDay,
-    isNewAppointment = false
-  ) {
-    let days = null
+  function getDays (operation, isNewAppointment) {
+    let days
     if (operation === SUBTRACT_SPOTS) {
       if (isNewAppointment) {
-        days = stateDays.map(each => {
-          if (each.name === selectedDay) {
+        days = state.days.map(each => {
+          if (each.name === state.day) {
             return { ...each, spots: each.spots - 1 }
           }
           return each
         })
       } else {
-        days = [...stateDays]
+        days = [...state.days]
       }
     }
     if (operation === ADD_SPOTS) {
-      days = stateDays.map(each => {
-        if (each.name === selectedDay) {
+      days = state.days.map(each => {
+        if (each.name === state.day) {
           return { ...each, spots: each.spots + 1 }
         }
         return each
@@ -139,6 +163,24 @@ export default function useApplicationData () {
         data: { interview }
       })
         .then(response => {
+          /*           let days
+          //update spots
+          if (isNewAppointment) {
+            days = state.days.map(each => {
+              if (each.name === state.day) {
+                return { ...each, spots: each.spots - 1 }
+              }
+              return each
+            })
+          } else {
+            days = [...state.days]
+          }
+ */
+          /*     setState({
+            ...state,
+            appointments,
+            days
+          }) */
           dispatch({ type: SET_APPLICATION_DATA, appointments })
           dispatch({ type: SUBTRACT_SPOTS, isNewAppointment })
           resolve(response)
@@ -165,6 +207,19 @@ export default function useApplicationData () {
       axios
         .delete(`${HOST_URL}/api/appointments/${id}`)
         .then(response => {
+          //calculate spots
+          /*           const days = state.days.map(each => {
+            if (each.name === state.day) {
+              return { ...each, spots: each.spots + 1 }
+            }
+            return each
+          })
+ */
+          /*          setState({
+            ...state,
+            appointments,
+            days
+          }) */
           dispatch({ type: SET_APPLICATION_DATA, appointments })
           dispatch({ type: ADD_SPOTS })
           resolve(response)

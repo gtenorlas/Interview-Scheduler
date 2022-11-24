@@ -61,7 +61,7 @@ export default function useApplicationData () {
           [...state.days],
           SUBTRACT_SPOTS,
           state.day,
-          action.isNewAppointment
+          action.isNewAppointment,
         )
         return {
           ...state,

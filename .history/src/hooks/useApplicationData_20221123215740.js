@@ -60,8 +60,8 @@ export default function useApplicationData () {
         const days = getDays(
           [...state.days],
           SUBTRACT_SPOTS,
-          state.day,
-          action.isNewAppointment
+          action.isNewAppointment,
+          state.day
         )
         return {
           ...state,
@@ -69,7 +69,7 @@ export default function useApplicationData () {
         }
       }
       case ADD_SPOTS: {
-        const days = getDays([...state.days], ADD_SPOTS, state.day)
+        const days = getDays([...state.days], SUBTRACT_SPOTS, state.day)
         return {
           ...state,
           days
@@ -89,8 +89,8 @@ export default function useApplicationData () {
   function getDays (
     stateDays,
     operation,
-    selectedDay,
-    isNewAppointment = false
+    isNewAppointment = false,
+    selectedDay
   ) {
     let days = null
     if (operation === SUBTRACT_SPOTS) {
