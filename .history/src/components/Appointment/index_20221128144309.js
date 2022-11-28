@@ -80,7 +80,7 @@ export default function Appointment (props) {
       )}
       {mode === CREATE && (
         <Form
-          student=''
+          student=''{props.interview ? props.interview.student : ''}''
           interviewer={null}
           interviewers={props.interviewers}
           onSave={save}
