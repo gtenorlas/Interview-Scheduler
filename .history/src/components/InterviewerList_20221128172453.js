@@ -3,7 +3,6 @@ import './InterviewerList.scss'
 import InterviewerListItem from "./InterviewerListItem";
 import PropTypes from 'prop-types';
 
-
 /*
 Creates interviewer list menu
 */
@@ -27,7 +26,3 @@ export default function InterviewerList(props) {
     </section>
   );
 }
-
-InterviewerList.propTypes = {
-  interviewers: PropTypes.array.isRequired
-};
