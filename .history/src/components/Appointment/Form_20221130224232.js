@@ -50,7 +50,6 @@ export default function Form(props) {
             data-testid="student-name-input"
           />
         </form>
-        <section className="appointment__validation">{error}</section>
         <InterviewerList
           interviewers={props.interviewers}
           value={interviewer}
