@@ -77,7 +77,7 @@ export default {
       return Promise.resolve({
         status: 200,
         statusText: "OK",
-        data: fixtures.interviewers
+        data: fixtures.appointments
       });
     }
   })
