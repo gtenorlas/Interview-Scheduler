@@ -97,7 +97,7 @@ describe('Form', () => {
     const { getByText, getByPlaceholderText, queryByText } = render(
       <Form
         interviewers={interviewers}
-        student="Lydia Mill-Jones"
+        name="Lydia Mill-Jones"
         onSave={jest.fn()}
         onCancel={onCancel}
       />
