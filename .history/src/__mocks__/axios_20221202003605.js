@@ -54,6 +54,7 @@ const fixtures = {
 }
 
 export default {
+  defaults: { baseURL: '' },
   get: jest.fn(url => {
     if (url === '/api/days?q=proxy') {
       return Promise.resolve({

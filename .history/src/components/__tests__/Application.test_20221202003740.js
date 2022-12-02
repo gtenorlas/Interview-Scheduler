@@ -9,7 +9,8 @@ import {
   getByPlaceholderText,
   queryByText,
   waitForElement,
-  fireEvent
+  fireEvent,
+  prettyDOM
 } from '@testing-library/react'
 
 import Application from 'components/Application'
@@ -44,8 +45,11 @@ describe('Application', () => {
     fireEvent.click(getByText(appointment, "Save"));
 
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
-   
+
+  
+  
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
+
   
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")

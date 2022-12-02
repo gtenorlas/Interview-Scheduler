@@ -44,8 +44,11 @@ describe('Application', () => {
     fireEvent.click(getByText(appointment, "Save"));
 
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
-   
+
+  
+  
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
+
   
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")

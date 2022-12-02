@@ -54,6 +54,7 @@ const fixtures = {
 }
 
 export default {
+  defaults: { baseURL: '' },
   get: jest.fn(url => {
     if (url === '/api/days?q=proxy') {
       return Promise.resolve({
@@ -83,8 +84,13 @@ export default {
   }),
   put: jest.fn(url => {
     if (
-      url === '/api/appointments/1?q=proxy'
+      url === '/api/appointments/1?q=proxy' ||
+      url === '/api/appointments/2?q=proxy' ||
+      url === 'http://localhost:8001/api/appointments/1' ||
+      url === 'http://localhost:8001/api/appointments/2' ||
+      url
     ) {
+      console.log('url')
       return Promise.resolve({
         status: 204,
         statusText: 'No Content'

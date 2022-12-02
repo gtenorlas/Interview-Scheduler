@@ -83,7 +83,7 @@ export default {
   }),
   put: jest.fn(url => {
     if (
-      url === '/api/appointments/1?q=proxy'
+      url === `/api/appointments/${id}?q=proxy`
     ) {
       return Promise.resolve({
         status: 204,

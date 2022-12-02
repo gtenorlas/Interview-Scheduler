@@ -83,7 +83,7 @@ export default {
   }),
   put: jest.fn(url => {
     if (
-      url === '/api/appointments/1?q=proxy'
+      url === 'http://localhost:8001/api/appointments/3'
     ) {
       return Promise.resolve({
         status: 204,

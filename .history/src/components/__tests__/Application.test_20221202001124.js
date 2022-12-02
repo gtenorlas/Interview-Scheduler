@@ -7,9 +7,9 @@ import {
   getAllByTestId,
   getByAltText,
   getByPlaceholderText,
-  queryByText,
   waitForElement,
-  fireEvent
+  fireEvent,
+  prettyDOM
 } from '@testing-library/react'
 
 import Application from 'components/Application'
@@ -27,7 +27,7 @@ describe('Application', () => {
   })
 
   it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
-    const { container} = render(<Application />);
+    const { container,debug} = render(<Application />);
   
     await waitForElement(() => getByText(container, "Archie Cohen"));
   
@@ -43,9 +43,14 @@ describe('Application', () => {
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     fireEvent.click(getByText(appointment, "Save"));
 
+    expect(onSave).toHaveBeenCalledTimes(1);
+    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
+  
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
-   
+  
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
+
+    debug()
   
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")

@@ -141,14 +141,7 @@ export default function useApplicationData () {
           dispatch({ type: SUBTRACT_SPOTS, isNewAppointment })
           resolve(response)
         })
-        .catch(error => reject(error)) */
-        axios.put(`/api/appointments/${id}?q=proxy`,{ interview })
-          .then(response => {
-            dispatch({ type: SET_APPLICATION_DATA, appointments })
-            dispatch({ type: SUBTRACT_SPOTS, isNewAppointment })
-            resolve(response)
-          })
-          .catch(error => reject(error))
+        .catch(error => reject(error)) */4
     })
   }
 

@@ -142,7 +142,11 @@ export default function useApplicationData () {
           resolve(response)
         })
         .catch(error => reject(error)) */
-        axios.put(`/api/appointments/${id}?q=proxy`,{ interview })
+        axios({
+          method: 'put',
+          url: `/api/appointments/${id}?q=proxy`,
+          data: { interview }
+        })
           .then(response => {
             dispatch({ type: SET_APPLICATION_DATA, appointments })
             dispatch({ type: SUBTRACT_SPOTS, isNewAppointment })
