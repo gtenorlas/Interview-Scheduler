@@ -94,6 +94,7 @@ export default function Appointment (props) {
         />
       )}
       {mode === SAVING && <Status message='Saving...' />}
+
       {mode === ERROR_SAVE && (
         <Error onClose={() => back()} message={message} />
       )}

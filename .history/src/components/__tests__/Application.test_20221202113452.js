@@ -184,7 +184,7 @@ describe('Application', () => {
     // 2. Render the Application.
     const { container } = render(<Application />)
 
-    // 3. Wait until the text "Archie Cohen" is displayed.
+    //3. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, 'Archie Cohen'))
 
     // 4. Click the "Delete" button on the booked appointment.

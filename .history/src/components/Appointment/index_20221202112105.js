@@ -48,7 +48,7 @@ export default function Appointment (props) {
       })
       .catch(() => {
         setMessage('Could not save appointment')
-        transition(ERROR_SAVE, true)
+        transition(ERROR_SAVE true)
       })
   }
 
@@ -94,6 +94,7 @@ export default function Appointment (props) {
         />
       )}
       {mode === SAVING && <Status message='Saving...' />}
+
       {mode === ERROR_SAVE && (
         <Error onClose={() => back()} message={message} />
       )}

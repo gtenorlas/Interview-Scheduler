@@ -177,41 +177,7 @@ describe('Application', () => {
     ).toBeInTheDocument()
   })
 
-  it('shows the delete error when failing to delete an existing appointment', async () => {
-    //1. Mock the delete error
+  it('shows the delete error when failing to delete an existing appointment', () => {
     axios.delete.mockRejectedValueOnce()
-
-    // 2. Render the Application.
-    const { container } = render(<Application />)
-
-    // 3. Wait until the text "Archie Cohen" is displayed.
-    await waitForElement(() => getByText(container, 'Archie Cohen'))
-
-    // 4. Click the "Delete" button on the booked appointment.
-    const appointment = getAllByTestId(container, 'appointment').find(
-      appointment => queryByText(appointment, 'Archie Cohen')
-    )
-    fireEvent.click(queryByAltText(appointment, 'Delete'))
-
-    // 5. Check that the confirmation message is shown.
-    expect(
-      getByText(appointment, 'Are you sure you would like to delete?')
-    ).toBeInTheDocument()
-
-    // 6. Click the "Confirm" button on the confirmation.
-    fireEvent.click(getByText(appointment, 'Confirm'))
-
-    // 7. Check that the element with the text "Deleting" is displayed.
-    expect(getByText(appointment, 'Deleting...')).toBeInTheDocument()
-
-    // 8. Wait until the element with the text "Could not delete appointment" is displayed.
-    await waitForElement(() =>
-      getByText(container, 'Could not delete appointment')
-    )
-
-    //9. Expect to have "Could not delete appointment" in the container
-    expect(
-      getByText(container, 'Could not delete appointment')
-    ).toBeInTheDocument()
   })
 })
