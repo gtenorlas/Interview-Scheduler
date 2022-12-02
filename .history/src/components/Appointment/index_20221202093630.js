@@ -96,14 +96,14 @@ export default function Appointment (props) {
           onCancel={()=>back()}
         />
       )}
-      {mode === SAVING && <Status message='Saving...' />}
+      {mode === SAVING && <Status message='Saving' />}
       {mode === ERROR_SAVE_USER && (
         <Error onClose={() => back(true)} message={message}/>
       )}
          {mode === ERROR_SAVE_SERVER && (
         <Error onClose={() => back()} message={message}/>
       )}
-      {mode === DELETING && <Status message='Deleting...' />}
+      {mode === DELETING && <Status message='Deleting' />}
       {mode === ERROR_DELETE && (
         <Error onClose={() => back()} message='Could not delete appointment' />
       )}
