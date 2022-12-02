@@ -8,8 +8,7 @@ import {
   getByAltText,
   getByPlaceholderText,
   waitForElement,
-  fireEvent,
-  prettyDOM
+  fireEvent\
 } from '@testing-library/react'
 
 import Application from 'components/Application'
@@ -43,6 +42,5 @@ describe('Application', () => {
     fireEvent.click(getByAltText(appointment, 'Sylvia Palmer'))
 
     fireEvent.click(getByText(appointment, 'Save'))
-    console.log(prettyDOM(appointment));
   })
 })

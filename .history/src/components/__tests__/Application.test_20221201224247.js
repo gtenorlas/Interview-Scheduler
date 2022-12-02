@@ -6,7 +6,7 @@ import {
   getByText,
   getAllByTestId,
   getByAltText,
-  getByPlaceholderText,
+  getByPl
   waitForElement,
   fireEvent,
   prettyDOM
@@ -43,6 +43,5 @@ describe('Application', () => {
     fireEvent.click(getByAltText(appointment, 'Sylvia Palmer'))
 
     fireEvent.click(getByText(appointment, 'Save'))
-    console.log(prettyDOM(appointment));
   })
 })
