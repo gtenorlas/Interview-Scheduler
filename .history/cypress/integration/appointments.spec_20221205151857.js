@@ -19,17 +19,18 @@ describe('Appointments', () => {
     cy.contains('.appointment__card--show', 'Sylvia Palmer')
   })
 
-  it("should edit an interview", () => {
-    cy.get("[alt=Edit]")
-      .first()
-      .click({ force: true });
-  
-    cy.get("[data-testid=student-name-input]").clear().type("Lydia Miller-Jones",{delay:100});
+  it('should edit an interview', () => {
+    cy.get('[alt=Edit]').first().click({ force: true });
+
+    cy.get('[data-testid=student-name-input]')
+      .clear()
+      .type('Vlad{backspace}{backspace} Hernandez{backspace}', { delay: 100 });
+
     cy.get("[alt='Tori Malcolm']").click();
-  
-    cy.contains("Save").click();
-  
-    cy.contains(".appointment__card--show", "Lydia Miller-Jones");
-    cy.contains(".appointment__card--show", "Tori Malcolm");
+
+    cy.contains('Save').click();
+
+    cy.contains('.appointment__card--show', 'Vlad Hernande');
+    cy.contains('.appointment__card--show', 'Tori Malcolm');
   });
 })
