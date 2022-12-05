@@ -1,0 +1,36 @@
+/* {
+  "compilerOptions": {
+    "baseUrl": "./src"
+  }
+} */
+
+×
+Congrats on completing activity 'End to End Testing'!
+Adding Cypress
+Interview Scheduler Assignment
+30 minutes
+ Status
+Incomplete
+The Cypress team prides itself on the ease of its install process. Remember that we need to make the right things easy. If it is hard to install the test framework, then it is less likely developers will go through all of the trouble.
+
+There is a lot of software needed to perform these tests, and the team has packaged it all into the Cypress framework available through npm. This activity will provide a guide to installing and running a single test that visits the root of the web server.
+
+Installing the Tool
+Warning
+The Cypress documentation describes the install process in great detail. Our use of a virtual machine complicates the simple Cypress install process. We want to install Cypress on our Host machine (Mac OS X, Ubuntu, Windows) rather than the Guest machine. These instructions will differ from the documentation.
+
+We need to start by installing the Cypress application as a global npm install.
+
+Instruction
+On the Host machine run the npm install -g cypress@9.7.0 command. Installing cypress globally will ensure that the correct version for the Host machine is installed.
+
+We can also configure the application with a cypress.json file. The following settings should get us started. This tells Cypress to use http://localhost:8000 as the base url, so that when we cy.visit("/") we do not need to include the host name and port.
+
+Note
+Feel free to tweak the viewport size, those are values in number of pixels. The viewport changes will not be obvious until the tests are running in the browser.
+
+{
+  "baseUrl": "http://localhost:8000",
+  "viewportWidth": 1280,
+  "viewportHeight": 720
+}
