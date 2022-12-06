@@ -33,6 +33,7 @@ export default function Appointment (props) {
       interviewer
     }
 
+
     transition(SAVING, true)
 
     props
@@ -96,7 +97,7 @@ export default function Appointment (props) {
       )}
       {mode === CONFIRM && (
         <Confirm
-          message='Are you sure you would like to delete?'
+          message={showMessage('Are you sure you would like to delete?'
           onCancel={() => transition(SHOW)}
           onConfirm={cancel}
         />

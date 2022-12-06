@@ -26,12 +26,14 @@ export default function Appointment (props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   )
+  const [message, setMessage] = useState('')
 
   function save (name, interviewer) {
     const interview = {
       student: name,
       interviewer
     }
+
 
     transition(SAVING, true)
 
@@ -41,6 +43,7 @@ export default function Appointment (props) {
         transition(SHOW)
       })
       .catch(() => {
+        setMessage('Could not save appointment')
         transition(ERROR_SAVE, true)
       })
   }
@@ -88,7 +91,7 @@ export default function Appointment (props) {
       )}
       {mode === SAVING && <Status message='Saving...' />}
       {mode === ERROR_SAVE && (
-        <Error onClose={() => back()} message='Could not save appointment' />
+        <Error onClose={() => back()} message={message} />
       )}
       {mode === DELETING && <Status message='Deleting...' />}
       {mode === ERROR_DELETE && (
@@ -96,7 +99,7 @@ export default function Appointment (props) {
       )}
       {mode === CONFIRM && (
         <Confirm
-          message='Are you sure you would like to delete?'
+          message={()=>setMessage'Are you sure you would like to delete?')}
           onCancel={() => transition(SHOW)}
           onConfirm={cancel}
         />

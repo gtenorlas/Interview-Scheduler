@@ -14,12 +14,14 @@ export default function useVisualMode (initial) {
       setHistory([...history, newMode])
     }
 
+
   }
 
   /*
   onError => false, when an error occurs. History will not be deleted as user can make multiple errors in a row
   */
   const back = (onError = false) => {
+    console.log('back')
     if (history.length !== 1) {
       if (!onError) {
         setMode(history[history.length - 2])

@@ -10,4 +10,5 @@ describe("Appointment", () => {
   it("renders without crashing", () => {
     render(<Appointment />);
   });
+
 });
